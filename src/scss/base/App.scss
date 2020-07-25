@@ -1,0 +1,16 @@
+@import 'config';
+
+.container {
+  background: $blueContainerMainTop;
+  background: linear-gradient(
+    to bottom,
+    $blueContainerMainTop,
+    $blueContainerMainBottom
+  );
+  min-height: 99vw;
+}
+
+.center-container {
+  background: $blueContainerRight;
+  background: linear-gradient(to right, $blueContainerLeft, blueContainerRight);
+}
