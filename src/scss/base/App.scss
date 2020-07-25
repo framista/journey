@@ -1,16 +1,37 @@
 @import 'config';
 
+:root {
+  box-sizing: border-box;
+  font-family: $font-stack;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   background: $blueContainerMainTop;
+  background: linear-gradient(to left, $blueContainerLeft, $blueContainerRight);
+  min-height: 100vh;
+}
+
+.center-container {
+  background: $blueContainerRight;
   background: linear-gradient(
     to bottom,
     $blueContainerMainTop,
     $blueContainerMainBottom
   );
-  min-height: 99vw;
-}
-
-.center-container {
-  background: $blueContainerRight;
-  background: linear-gradient(to right, $blueContainerLeft, blueContainerRight);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 700px;
+  height: 100%;
+  padding: 4em 2em;
 }
