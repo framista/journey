@@ -24,7 +24,7 @@ function App() {
   return (
     <main className="container">
       <section className="center-container">
-        <div>
+        <div className="journey-container">
           {journeys.map((journey) => (
             <JourneyTile journey={journey} />
           ))}
