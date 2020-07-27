@@ -1,0 +1,52 @@
+.journey-container {
+  background: $blueJourneyContainer;
+  border-radius: 10px;
+}
+
+.journey {
+  background: $white;
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+  &__img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  &__description {
+    margin-left: 1.5rem;
+  }
+  &__h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding-bottom: 0.4rem;
+    word-break: break-all;
+  }
+  &__p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: $grey;
+  }
+}
+
+@media (max-width: 700px) {
+  .journey {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    &__description {
+      margin-left: 0.75rem;
+    }
+    &__h3 {
+      font-size: 1.2rem;
+    }
+    &__p {
+      font-size: 0.6rem;
+    }
+  }
+}

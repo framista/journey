@@ -17,6 +17,9 @@
   background: $blueContainerMainTop;
   background: linear-gradient(to left, $blueContainerLeft, $blueContainerRight);
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .center-container {
@@ -26,12 +29,16 @@
     $blueContainerMainTop,
     $blueContainerMainBottom
   );
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
+  width: 90%;
   max-width: 700px;
   height: 100%;
-  padding: 4em 2em;
+  padding: 4rem 2rem;
 }
+
+@media (max-width: 700px) {
+  .center-container {
+    padding: 2rem 1rem;
+  }
+}
+
+@import '../components/journey';
