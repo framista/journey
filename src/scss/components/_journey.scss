@@ -9,6 +9,7 @@
   padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-radius: 10px;
   &:hover {
     cursor: pointer;
@@ -21,6 +22,7 @@
   }
   &__description {
     margin-left: 1.5rem;
+    flex-grow: 1;
   }
   &__h3 {
     font-size: 1.8rem;
@@ -32,6 +34,9 @@
     font-size: 1.2rem;
     font-weight: 500;
     color: $grey;
+  }
+  &__icon {
+    font-size: 3rem;
   }
 }
 
@@ -47,6 +52,9 @@
     }
     &__p {
       font-size: 0.6rem;
+    }
+    &__icon {
+      font-size: 2rem;
     }
   }
 }
