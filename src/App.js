@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import 'normalize.css';
 import './scss/base/App.scss';
 import JourneyTile from './components/JourneyTile';
@@ -23,22 +23,32 @@ const journeysData = [
 ];
 
 function App() {
-
   const [journeys, setJourneys] = useState(journeysData);
 
   const handleDeleteJourney = (id) => {
-    const journeysFiltered = journeys.filter(journey => journey.id !== id ); 
-    setJourneys(journeysFiltered)
-  }
+    const journeysFiltered = journeys.filter((journey) => journey.id !== id);
+    setJourneys(journeysFiltered);
+  };
 
   return (
     <main className="container">
       <section className="center-container">
-        <div className="journey-container">
-          {journeys.map((journey) => (
-            <JourneyTile journey={journey} key={journey.date} deleteJourney={handleDeleteJourney}/>
-          ))}
-        </div>
+        {journeys.length ? (
+          <div className="journey-container">
+            {journeys.map((journey) => (
+            <JourneyTile
+              journey={journey}
+              key={journey.date}
+              deleteJourney={handleDeleteJourney}
+            />
+            ))}
+          </div>
+        ) : (
+          <div className="no-journey">
+            <h2 className="no-journey__h2">You don't have any journeys</h2>
+            <button className="no-journey__btn">Add journey</button>
+          </div>
+        )}
       </section>
     </main>
   );
