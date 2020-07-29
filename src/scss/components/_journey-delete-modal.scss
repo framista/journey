@@ -1,0 +1,82 @@
+.delete-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $white;
+  border-radius: 50px;
+  box-shadow: -1px -1px 25px 0px rgba(50, 50, 50, 0.75);
+  z-index: 100;
+  padding: 2rem;
+  width: 80%;
+  max-width: 600px;
+  cursor: auto;
+  pointer-events: all;
+  &__title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    h5 {
+      font-size: 1.8rem;
+    }
+  }
+  &__body {
+    padding: 2em 0;
+    text-align: center;
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  &__button {
+    padding: 0.8em 2em;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 2px solid $blue;
+    outline: none;
+    cursor: pointer;
+    &--yes {
+      background-color: $white;
+      color: $blue;
+      &:hover {
+        border: 2px solid darken($color: $blue, $amount: 20);
+        background-color: darken($color: $blue, $amount: 20);
+        color: $white;
+      }
+    }
+    &--no {
+      border: none;
+      background-color: $blue;
+      color: $white;
+      &:hover {
+        background-color: darken($color: $blue, $amount: 20);
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .delete-modal {
+    padding: 1.5rem;
+    &__title {
+      h5 {
+        font-size: 1.2rem;
+      }
+    }
+    &__body {
+      padding: 1em;
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}

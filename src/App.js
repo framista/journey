@@ -73,6 +73,7 @@ const journeysData = [
 
 function App() {
   const [journeys, setJourneys] = useState(journeysData);
+  const [blockClicking, setBlockClicking] = useState(false);
 
   const handleDeleteJourney = (id) => {
     const journeysFiltered = journeys.filter((journey) => journey.id !== id);
@@ -81,19 +82,23 @@ function App() {
 
   return (
     <main className="container">
-      <section className="center-container">
+      <section
+        className="center-container"
+        style={{ pointerEvents: blockClicking ? 'none' : 'auto' }}
+      >
         {journeys.length ? (
           <div className="journey-container">
             {journeys.map((journey) => (
-            <JourneyTile
-              journey={journey}
-              key={journey.id}
-              deleteJourney={handleDeleteJourney}
-            />
+              <JourneyTile
+                journey={journey}
+                key={journey.id}
+                deleteJourney={handleDeleteJourney}
+                setBlockClicking={setBlockClicking}
+              />
             ))}
           </div>
         ) : (
-         <NoJourney />
+          <NoJourney />
         )}
       </section>
     </main>
