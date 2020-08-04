@@ -40,6 +40,25 @@
   }
 }
 
+.new-journey__btn {
+  position: fixed;
+  bottom: 5vmin;
+  right: 5vmin;
+  background-color: $white;
+  color: $blueJourneyContainer;
+  font-weight: 600;
+  font-size: 4.5rem;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid $blueJourneyContainer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 @media (max-width: 700px) {
   .journey {
     margin-bottom: 0.5rem;
@@ -56,5 +75,10 @@
     &__icon {
       font-size: 2rem;
     }
+  }
+  .new-journey__btn {
+    width: 60px;
+    height: 60px;
+    font-size: 3rem;
   }
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import JourneyTile from './JourneyTile';
 import NoJourney from './NoJourney';
 
@@ -99,6 +100,9 @@ function Journeys() {
           <NoJourney />
         )}
       </section>
+      <Link className="new-journey__btn" to="/create">
+        +
+      </Link>
     </main>
   );
 }
