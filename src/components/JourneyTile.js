@@ -4,7 +4,7 @@ import JourneyDeleteModal from './JourneyDeleteModal';
 
 function JourneyTile(props) {
   const { journey, deleteJourney, setBlockClicking } = props;
-  const { id, localization, date, image, companions } = journey;
+  const { localization, date, image } = journey;
   const [deleteModal, setDeleteModal] = useState(false);
 
   const handleDelete = (e) => {
