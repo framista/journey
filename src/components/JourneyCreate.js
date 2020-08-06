@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function JourneyCreate() {
   const [journey, setJourney] = useState({
@@ -8,7 +9,7 @@ function JourneyCreate() {
     travellingCompanion: ['Kasia', 'Basia', 'Franek', 'Tosia'],
     imageFile: '',
   });
-  const [member, setMember] = useState("");
+  const [member, setMember] = useState('');
 
   const days = new Array(31).fill(0).map((_, index) => index + 1);
   const months = new Array(12).fill(0).map((_, index) => index + 1);
@@ -30,13 +31,13 @@ function JourneyCreate() {
   };
 
   const keyPressed = (e) => {
-    if (e.key === 'Enter'){
+    if (e.key === 'Enter') {
       e.preventDefault();
       const newCompanion = [...journey.travellingCompanion, member];
-      setJourney({...journey, travellingCompanion: newCompanion});
-      setMember("");
+      setJourney({ ...journey, travellingCompanion: newCompanion });
+      setMember('');
     }
-  }
+  };
 
   return (
     <main className="container">
@@ -59,27 +60,36 @@ function JourneyCreate() {
           <div className="new-journey__group">
             <label>Start date</label>
             <div className="new-journey__date">
-              <select onClick={(e) => console.log(e.target.value)}>
-                {days.map((day) => (
-                  <option key={day} value={day}>
-                    {day}
-                  </option>
-                ))}
-              </select>
-              <select onClick={(e) => console.log(e.target.value)}>
-                {months.map((month) => (
-                  <option key={month} value={month}>
-                    {month}
-                  </option>
-                ))}
-              </select>
-              <select onClick={(e) => console.log(e.target.value)}>
-                {years.map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </select>
+              <div className="new-journey__select">
+                Day
+                <select onClick={(e) => console.log(e.target.value)}>
+                  {days.map((day) => (
+                    <option key={day} value={day}>
+                      {day}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="new-journey__select">
+                Month
+                <select onClick={(e) => console.log(e.target.value)}>
+                  {months.map((month) => (
+                    <option key={month} value={month}>
+                      {month}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="new-journey__select">
+                Year
+                <select onClick={(e) => console.log(e.target.value)}>
+                  {years.map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
           <div className="new-journey__group">
@@ -105,16 +115,30 @@ function JourneyCreate() {
                 </div>
               ))}
             </div>
-            <input type="text" onKeyPress={keyPressed} value={member} onChange={(e) => setMember(e.target.value)}/>
+            <input
+              type="text"
+              onKeyPress={keyPressed}
+              value={member}
+              onChange={(e) => setMember(e.target.value)}
+            />
           </div>
           <div className="new-journey__group">
             <label>Image</label>
             <input type="file" id="file-image" />
-            <label htmlFor="file-image">Choose image</label>
+            <label htmlFor="file-image" className="new-journey__label--image">
+              Choose image
+            </label>
           </div>
           <div className="new-journey__buttons">
-            <button>BACK TO HOMEPAGE</button>
-            <button>SAVE</button>
+            <Link
+              className="new-journey__button new-journey__button--back"
+              to="/"
+            >
+              back to homepage
+            </Link>
+            <button className="new-journey__button new-journey__button--add">
+              add journey
+            </button>
           </div>
         </form>
       </section>
