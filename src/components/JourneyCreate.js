@@ -9,6 +9,13 @@ function JourneyCreate() {
     travellingCompanion: ['Kasia', 'Basia', 'Franek', 'Tosia'],
     imageFile: '',
   });
+  const [errorJourney, setErrorJourney] = useState({
+    location: '',
+    startDate: '',
+    description: '',
+    travellingCompanion: '',
+    imageFile: '',
+  });
   const [member, setMember] = useState('');
 
   const days = new Array(31).fill(0).map((_, index) => index + 1);
@@ -21,6 +28,22 @@ function JourneyCreate() {
     const name = e.target.name;
     const value = e.target.value;
     setJourney({ ...journey, [name]: value });
+  };
+
+  const onLocationChange = (e) => {
+    const location = e.target.value;
+    setJourney({ ...journey, location });
+    const locationError = validateLocation(location);
+    setErrorJourney({
+      ...errorJourney,
+      location: locationError,
+    });
+  };
+
+  const validateLocation = (location) => {
+    return location.length < 3 || location.length > 60
+      ? 'The location should contain min 3 and max 60 characters'
+      : '';
   };
 
   const deleteCompanion = (index) => {
@@ -53,9 +76,13 @@ function JourneyCreate() {
             <input
               type="text"
               name="location"
-              onChange={handleChange}
+              onChange={onLocationChange}
               value={journey.location}
+              autoFocus
             />
+            {errorJourney.location && (
+              <p className="new-journey__error">{errorJourney.location}</p>
+            )}
           </div>
           <div className="new-journey__group">
             <label>Start date</label>

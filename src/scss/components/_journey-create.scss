@@ -35,6 +35,11 @@
       }
     }
   }
+  &__error {
+    color: $red;
+    font-size: 0.8em;
+    padding-top: 0.3em;
+  }
   &__date {
     display: flex;
   }
