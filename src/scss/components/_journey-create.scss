@@ -6,13 +6,15 @@
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   &__img {
     border-radius: 10px;
+    object-fit: cover;
   }
   &__form {
     padding: 1rem;
     flex-grow: 1;
+    // max-width: 100%;
   }
   &__group {
     display: flex;
@@ -130,12 +132,19 @@
   }
 }
 
+@media (max-width: 1000px) {
+  .new-journey {
+    flex-direction: column;
+    &__img {
+      max-height: 700px;
+    }
+  }
+}
+
 @media (max-width: 700px) {
   .new-journey {
     &__img {
-      width: 100%;
       max-height: 300px;
-      object-fit: cover;
     }
   }
 }

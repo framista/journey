@@ -24,12 +24,6 @@ function JourneyCreate() {
     .fill(new Date().getFullYear())
     .map((y, index) => y - index);
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setJourney({ ...journey, [name]: value });
-  };
-
   const onLocationChange = (e) => {
     const location = e.target.value;
     setJourney({ ...journey, location });
@@ -40,10 +34,14 @@ function JourneyCreate() {
     });
   };
 
-  const validateLocation = (location) => {
-    return location.length < 3 || location.length > 60
-      ? 'The location should contain min 3 and max 60 characters'
-      : '';
+  const onDescriptionChange = (e) => {
+    const description = e.target.value;
+    setJourney({ ...journey, description });
+    const descriptionError = validateDescription(description);
+    setErrorJourney({
+      ...errorJourney,
+      description: descriptionError,
+    });
   };
 
   const deleteCompanion = (index) => {
@@ -53,12 +51,44 @@ function JourneyCreate() {
     setJourney({ ...journey, travellingCompanion: newCompanion });
   };
 
-  const keyPressed = (e) => {
+  const onTravellingCompanionChange = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      const newCompanion = [...journey.travellingCompanion, member];
-      setJourney({ ...journey, travellingCompanion: newCompanion });
-      setMember('');
+      const travellingCompanionError = validateTravellingCompanion(member);
+      if (!travellingCompanionError) {
+        const newCompanion = [...journey.travellingCompanion, member];
+        setJourney({ ...journey, travellingCompanion: newCompanion });
+        setMember('');
+      }
+      setErrorJourney({
+        ...errorJourney,
+        travellingCompanion: travellingCompanionError,
+      });
+    }
+  };
+
+  const validateLocation = (location) => {
+    return location.length < 3 || location.length > 60
+      ? 'The location should contain min 3 and max 60 characters'
+      : '';
+  };
+
+  const validateDescription = (description) => {
+    return description.length > 300
+      ? 'The description should contain max 300 characters'
+      : '';
+  };
+
+  const validateTravellingCompanion = (member) => {
+    const { travellingCompanion } = journey;
+    if (travellingCompanion.length > 15) {
+      return 'You have too much traveling companions';
+    } else if (member.length < 3) {
+      return 'The travelling companion should contain at least 3 characters';
+    } else if (member.length > 15) {
+      return 'The travelling companion should contain max 15 characters';
+    } else {
+      return '';
     }
   };
 
@@ -123,9 +153,13 @@ function JourneyCreate() {
             <label>Description</label>
             <textarea
               name="description"
-              onChange={handleChange}
+              onChange={onDescriptionChange}
               value={journey.description}
+              rows={3}
             ></textarea>
+            {errorJourney.description && (
+              <p className="new-journey__error">{errorJourney.description}</p>
+            )}
           </div>
           <div className="new-journey__group">
             <label>Travelling companion</label>
@@ -144,10 +178,15 @@ function JourneyCreate() {
             </div>
             <input
               type="text"
-              onKeyPress={keyPressed}
+              onKeyPress={onTravellingCompanionChange}
               value={member}
               onChange={(e) => setMember(e.target.value)}
             />
+            {errorJourney.travellingCompanion && (
+              <p className="new-journey__error">
+                {errorJourney.travellingCompanion}
+              </p>
+            )}
           </div>
           <div className="new-journey__group">
             <label>Image</label>
