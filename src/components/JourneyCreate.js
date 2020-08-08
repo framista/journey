@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 function JourneyCreate() {
   const [journey, setJourney] = useState({
     location: '',
-    startDate: '',
+    startDate: { day: 1, month: 1, year: new Date().getFullYear() },
     description: '',
-    travellingCompanion: ['Kasia', 'Basia', 'Franek', 'Tosia'],
+    travellingCompanion: [],
     imageFile: '',
   });
+
   const [errorJourney, setErrorJourney] = useState({
     location: '',
     startDate: '',
@@ -16,6 +17,7 @@ function JourneyCreate() {
     travellingCompanion: '',
     imageFile: '',
   });
+
   const [member, setMember] = useState('');
 
   const days = new Array(31).fill(0).map((_, index) => index + 1);
@@ -25,13 +27,22 @@ function JourneyCreate() {
     .map((y, index) => y - index);
 
   const onLocationChange = (e) => {
-    const location = e.target.value;
+    const location = e.target.value.trim();
     setJourney({ ...journey, location });
     const locationError = validateLocation(location);
     setErrorJourney({
       ...errorJourney,
       location: locationError,
     });
+  };
+
+  const onStartDateChange = (value, period) => {
+    const { startDate } = journey;
+    startDate[period] = value;
+    setJourney({ ...journey, startDate });
+    const startDateError = validateStartDate(startDate);
+    console.log(startDateError);
+    setErrorJourney({ ...errorJourney, startDate: startDateError });
   };
 
   const onDescriptionChange = (e) => {
@@ -71,6 +82,20 @@ function JourneyCreate() {
     return location.length < 3 || location.length > 60
       ? 'The location should contain min 3 and max 60 characters'
       : '';
+  };
+
+  const validateStartDate = ({ day, month, year }) => {
+    const monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) {
+      monthLength[1] = 29;
+    }
+    if (day > monthLength[month - 1]) {
+      return 'Not correct date';
+    } else if (new Date(year, month - 1, day) > new Date()) {
+      return "Date shouldn't be from future";
+    } else {
+      return '';
+    }
   };
 
   const validateDescription = (description) => {
@@ -119,7 +144,10 @@ function JourneyCreate() {
             <div className="new-journey__date">
               <div className="new-journey__select">
                 Day
-                <select onClick={(e) => console.log(e.target.value)}>
+                <select
+                  onChange={(e) => onStartDateChange(e.target.value, 'day')}
+                  value={journey.startDate.day}
+                >
                   {days.map((day) => (
                     <option key={day} value={day}>
                       {day}
@@ -129,7 +157,10 @@ function JourneyCreate() {
               </div>
               <div className="new-journey__select">
                 Month
-                <select onClick={(e) => console.log(e.target.value)}>
+                <select
+                  onChange={(e) => onStartDateChange(e.target.value, 'month')}
+                  value={journey.startDate.month}
+                >
                   {months.map((month) => (
                     <option key={month} value={month}>
                       {month}
@@ -139,7 +170,10 @@ function JourneyCreate() {
               </div>
               <div className="new-journey__select">
                 Year
-                <select onClick={(e) => console.log(e.target.value)}>
+                <select
+                  onChange={(e) => onStartDateChange(e.target.value, 'year')}
+                  value={journey.startDate.year}
+                >
                   {years.map((year) => (
                     <option key={year} value={year}>
                       {year}
@@ -148,6 +182,9 @@ function JourneyCreate() {
                 </select>
               </div>
             </div>
+            {errorJourney.startDate && (
+              <p className="new-journey__error">{errorJourney.startDate}</p>
+            )}
           </div>
           <div className="new-journey__group">
             <label>Description</label>
@@ -164,17 +201,24 @@ function JourneyCreate() {
           <div className="new-journey__group">
             <label>Travelling companion</label>
             <div className="new-journey__companion">
-              {journey.travellingCompanion.map((el, index) => (
-                <div className="new-journey__chip" key={index}>
-                  {el}
-                  <div
-                    className="new-journey__chip--delete"
-                    onClick={() => deleteCompanion(index)}
-                  >
-                    &times;
+              {journey.travellingCompanion.length > 0 ? (
+                journey.travellingCompanion.map((el, index) => (
+                  <div className="new-journey__chip" key={index}>
+                    {el}
+                    <div
+                      className="new-journey__chip--delete"
+                      onClick={() => deleteCompanion(index)}
+                    >
+                      &times;
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                <p className="new-journey__add-companion">
+                  Insert below the name of travelling companion and press
+                  'Enter'
+                </p>
+              )}
             </div>
             <input
               type="text"

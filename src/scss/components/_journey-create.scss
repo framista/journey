@@ -62,6 +62,10 @@
     display: flex;
     flex-wrap: wrap;
   }
+  &__add-companion {
+    font-size: 0.9rem;
+    padding-bottom: 0.3em;
+  }
   &__chip {
     background-color: $blue;
     padding: 0.5em 0.7em;
