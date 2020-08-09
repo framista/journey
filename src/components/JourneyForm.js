@@ -20,6 +20,7 @@ function JourneyForm(props) {
   });
 
   const [member, setMember] = useState('');
+  const [imageName, setImageName] = useState('');
 
   const days = new Array(31).fill(0).map((_, index) => index + 1);
   const months = new Array(12).fill(0).map((_, index) => index + 1);
@@ -89,6 +90,7 @@ function JourneyForm(props) {
       const reader = new FileReader();
       reader.addEventListener('load', () => {
         setJourney({ ...journey, imageFile: reader.result });
+        setImageName(imageFile.split(/(\\|\/)/g).pop());
       });
       reader.readAsDataURL(e.target.files[0]);
     }
@@ -100,7 +102,6 @@ function JourneyForm(props) {
         <label>Location</label>
         <input
           type="text"
-          name="location"
           onChange={onLocationChange}
           value={journey.location}
           autoFocus
@@ -159,7 +160,6 @@ function JourneyForm(props) {
       <div className="new-journey__group">
         <label>Description</label>
         <textarea
-          name="description"
           onChange={onDescriptionChange}
           value={journey.description}
           rows={3}
@@ -208,9 +208,17 @@ function JourneyForm(props) {
           id="file-image"
           onChange={(e) => onFileImageChange(e)}
         />
-        <label htmlFor="file-image" className="new-journey__label--image">
-          Choose image
-        </label>
+        <div className="new-journey__image-info">
+          <label htmlFor="file-image" className="new-journey__label--image">
+            Choose image
+          </label>
+          {imageName && (
+            <p className="new-journey__image-name">
+              Selected file
+              <span> {imageName}</span>
+            </p>
+          )}
+        </div>
         {errorJourney.imageFile && (
           <p className="new-journey__error">{errorJourney.imageFile}</p>
         )}
