@@ -5,10 +5,10 @@ import {
   validateStartDate,
   validateDescription,
   validateTravellingCompanion,
+  validateImageFile,
 } from '../utils/validation';
 
 function JourneyForm(props) {
-
   const [journey, setJourney] = useState(props.journey);
 
   const [errorJourney, setErrorJourney] = useState({
@@ -80,6 +80,20 @@ function JourneyForm(props) {
       });
     }
   };
+
+  const onFileImageChange = (e) => {
+    const imageFile = e.target.value;
+    const fileImageError = validateImageFile(imageFile);
+    setErrorJourney({ ...errorJourney, imageFile: fileImageError });
+    if (!fileImageError) {
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        setJourney({ ...journey, imageFile: reader.result });
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
   return (
     <form className="new-journey__form">
       <div className="new-journey__group">
@@ -189,10 +203,17 @@ function JourneyForm(props) {
       </div>
       <div className="new-journey__group">
         <label>Image</label>
-        <input type="file" id="file-image" />
+        <input
+          type="file"
+          id="file-image"
+          onChange={(e) => onFileImageChange(e)}
+        />
         <label htmlFor="file-image" className="new-journey__label--image">
           Choose image
         </label>
+        {errorJourney.imageFile && (
+          <p className="new-journey__error">{errorJourney.imageFile}</p>
+        )}
       </div>
       <div className="new-journey__buttons">
         <Link className="new-journey__button new-journey__button--back" to="/">

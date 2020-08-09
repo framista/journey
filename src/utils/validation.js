@@ -35,3 +35,12 @@ export const validateTravellingCompanion = (member, membersAmount) => {
     return '';
   }
 };
+
+export const validateImageFile = (filename) => {
+  const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+  if (!allowedExtensions.test(filename)) {
+    return 'Not correct type of image file';
+  }
+  return '';
+};
+
