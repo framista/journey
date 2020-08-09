@@ -1,8 +1,10 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import JourneyForm from './JourneyForm';
 
 function JourneyCreate() {
   const journey = {
+    id: uuidv4(),
     location: '',
     startDate: { day: 1, month: 1, year: new Date().getFullYear() },
     description: '',
