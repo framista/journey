@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
   validateLocation,
@@ -234,5 +235,10 @@ function JourneyForm(props) {
     </form>
   );
 }
+
+JourneyForm.propTypes = {
+  journey: PropTypes.object.isRequired,
+  submitButton: PropTypes.string.isRequired,
+};
 
 export default JourneyForm;
