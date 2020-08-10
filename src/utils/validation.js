@@ -36,11 +36,21 @@ export const validateTravellingCompanion = (member, membersAmount) => {
   }
 };
 
-export const validateImageFile = (filename) => {
+export const validateImageFile = (filename, fileSize) => {
   const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
   if (!allowedExtensions.test(filename)) {
     return 'Not correct type of image file';
+  } else if (fileSize > 1000) {
+    return 'Too big image';
   }
   return '';
 };
 
+export const checkErrors = (errorJourney) => {
+  for (let key in errorJourney) {
+    if (errorJourney[key]) {
+      return true;
+    }
+  }
+  return false;
+};
