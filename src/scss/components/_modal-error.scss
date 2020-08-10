@@ -1,0 +1,50 @@
+.modal-error {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $white;
+  border-radius: 20px;
+  box-shadow: -1px -1px 25px 0px rgba(50, 50, 50, 0.75);
+  z-index: 100;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    background-color: $red;
+    color: $white;
+    border-radius: 90%;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding-top: 0.6em;
+  }
+  &__description {
+    font-size: 1.2rem;
+    padding: 1.2em 0;
+    text-align: center;
+    line-height: 1.4;
+  }
+  &__button {
+    background-color: $red;
+    color: $white;
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+  }
+}
