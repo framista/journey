@@ -99,10 +99,10 @@ function Journeys() {
         ) : (
           <NoJourney />
         )}
+        <Link className="new-journey__btn--create" to="/create">
+          +
+        </Link>
       </section>
-      <Link className="new-journey__btn" to="/create">
-        +
-      </Link>
     </main>
   );
 }
