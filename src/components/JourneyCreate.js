@@ -47,7 +47,7 @@ function JourneyCreate(props) {
           <>
             <div className="background"></div>
             <ModalError
-              title="Oops"
+              title="Oops!"
               description="There is no space to save this journey 😲"
               onCloseModal={onCloseModalError}
             />
