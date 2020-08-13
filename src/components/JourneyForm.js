@@ -35,7 +35,7 @@ function JourneyForm(props) {
     .map((y, index) => y - index);
 
   const onLocationChange = (e) => {
-    const location = e.target.value.trim();
+    const location = e.target.value;
     setJourney({ ...journey, location });
     const locationError = validateLocation(location);
     setErrorJourney({
