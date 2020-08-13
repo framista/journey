@@ -17,7 +17,7 @@ function JourneyCreate(props) {
 
   const saveJourney = (journey) => {
     const journeys = JSON.parse(localStorage.getItem('journeys')) || [];
-    journeys.push(journey);
+    journeys.unshift(journey);
     try {
       localStorage.setItem('journeys', JSON.stringify(journeys));
       props.history.push('/');

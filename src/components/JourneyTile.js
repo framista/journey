@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { TiDelete } from 'react-icons/ti';
 import JourneyDeleteModal from './JourneyDeleteModal';
+import Avatar from 'react-avatar';
 
 function JourneyTile(props) {
   const { journey, deleteJourney, setBlockClicking } = props;
   const { location, startDate, imageFile } = journey;
   const [deleteModal, setDeleteModal] = useState(false);
 
-
-  console.log(journey)
+  console.log(journey);
   const handleDelete = (e) => {
     e.stopPropagation();
     setDeleteModal(true);
@@ -21,7 +21,11 @@ function JourneyTile(props) {
 
   return (
     <div className="journey" onClick={handleShow}>
-      <img className="journey__img" src={imageFile} alt={location} />
+      {imageFile ? (
+        <img className="journey__img" src={imageFile} alt="" />
+      ) : (
+        <Avatar name={location.split(' ')[0]} size={60} round="50%" />
+      )}
       <div className="journey__description">
         <h3 className="journey__h3">{location}</h3>
         <p className="journey__p">{startDate.day}</p>
