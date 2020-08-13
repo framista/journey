@@ -6,16 +6,7 @@ import NoJourney from './NoJourney';
 function Journeys() {
   /* TODO: change image*/
   const [journeys, setJourneys] = useState(
-    JSON.parse(localStorage.getItem('journeys')) || [
-      {
-        id: 2222,
-        localization: 'Spain',
-        date: '02.06.2011',
-        image:
-          'https://images.unsplash.com/photo-1504019347908-b45f9b0b8dd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        companions: ['sister'],
-      },
-    ]
+    JSON.parse(localStorage.getItem('journeys')) || []
   );
 
   const [blockClicking, setBlockClicking] = useState(false);
