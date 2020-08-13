@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Journeys from '../components/Journeys';
 import NotFoundPage from '../components/NotFoundPage';
 import JourneyCreate from '../components/JourneyCreate';
 
 const AppRouter = () => (
-  <BrowserRouter>
+  <Router>
     <div>
       <Switch>
         <Route path="/" component={Journeys} exact={true} />
@@ -13,7 +13,7 @@ const AppRouter = () => (
         <Route component={NotFoundPage} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;
