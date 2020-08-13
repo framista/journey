@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatDate } from '../utils/format';
 
 function JourneyDeleteModal(props) {
   const { journey, deleteJourney, setDeleteModal, setBlockClicking } = props;
@@ -23,10 +24,9 @@ function JourneyDeleteModal(props) {
           <h5>Are you sure to delete this journey?</h5>
         </div>
         <div className="delete-modal__body">
-          {/* TODO: improve date */}
           <p>
             If you want to delete journey in <span>{location}</span>, which
-            started at <span>{startDate.day}</span> press YES.
+            started at <span>{formatDate(startDate)}</span> press YES.
           </p>
         </div>
         <div className="delete-modal__footer">

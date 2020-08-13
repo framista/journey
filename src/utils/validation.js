@@ -1,5 +1,5 @@
 export const validateLocation = (location) => {
-  if (/^\s/.test(location)) {
+  if (/^(\s|\d)/.test(location)) {
     return 'The location should start with a letter';
   } else if (location.length < 3 || location.length > 60) {
     return 'The location should contain min 3 and max 60 characters';

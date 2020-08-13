@@ -91,7 +91,6 @@ function JourneyForm(props) {
   const onFileImageChange = (e) => {
     const imageFile = e.target.value;
     const imageSize = Math.round(e.target.files[0].size / 1024);
-    console.log(imageSize);
     const fileImageError = validateImageFile(imageFile, imageSize);
     setErrorJourney({ ...errorJourney, imageFile: fileImageError });
     if (!fileImageError) {

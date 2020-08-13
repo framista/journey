@@ -8,7 +8,6 @@ function JourneyTile(props) {
   const { location, startDate, imageFile } = journey;
   const [deleteModal, setDeleteModal] = useState(false);
 
-  console.log(journey);
   const handleDelete = (e) => {
     e.stopPropagation();
     setDeleteModal(true);
@@ -28,6 +27,7 @@ function JourneyTile(props) {
       )}
       <div className="journey__description">
         <h3 className="journey__h3">{location}</h3>
+        {/* TODO: improve date */}
         <p className="journey__p">{startDate.day}</p>
       </div>
       <TiDelete className="journey__icon" onClick={(e) => handleDelete(e)} />

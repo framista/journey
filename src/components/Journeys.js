@@ -4,6 +4,7 @@ import JourneyTile from './JourneyTile';
 import NoJourney from './NoJourney';
 
 function Journeys() {
+  /* TODO: change image*/
   const [journeys, setJourneys] = useState(
     JSON.parse(localStorage.getItem('journeys')) || [
       {

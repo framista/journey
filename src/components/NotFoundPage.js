@@ -1,7 +1,6 @@
 import React from 'react';
 
 function NotFoundPage(props) {
-  console.log(props);
   return (
     <main className="container">
       <section className="no-page">
