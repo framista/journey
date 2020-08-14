@@ -142,7 +142,6 @@ function JourneyForm(props) {
             type="text"
             onChange={onLocationChange}
             value={journey.location}
-            autoFocus
           />
           {errorJourney.location && (
             <p className="new-journey__error">{errorJourney.location}</p>
