@@ -1,10 +1,10 @@
 import React from 'react';
 import 'normalize.css';
 import './scss/base/App.scss';
-import AppRoute from './routes/AppRoute';
+import AppRouter from './routes/AppRouter';
 
 function App() {
-  return <AppRoute />;
+  return <AppRouter />;
 }
 
 export default App;
