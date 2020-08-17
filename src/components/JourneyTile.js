@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TiDelete } from 'react-icons/ti';
 import JourneyDeleteModal from './JourneyDeleteModal';
 import Avatar from 'react-avatar';
+import { formatTimeAgo } from '../utils/format';
 
 function JourneyTile(props) {
   const { journey, deleteJourney, setBlockClicking } = props;
@@ -18,6 +19,7 @@ function JourneyTile(props) {
     console.log(location + startDate);
   };
 
+  console.log(startDate);
   return (
     <div className="journey" onClick={handleShow}>
       {imageFile ? (
@@ -27,8 +29,11 @@ function JourneyTile(props) {
       )}
       <div className="journey__description">
         <h3 className="journey__h3">{location}</h3>
-        {/* TODO: improve date */}
-        <p className="journey__p">{startDate.day}</p>
+        <p className="journey__p">
+          {formatTimeAgo(
+            new Date(startDate.year, startDate.month - 1, startDate.day)
+          )}
+        </p>
       </div>
       <TiDelete className="journey__icon" onClick={(e) => handleDelete(e)} />
       {deleteModal && (
