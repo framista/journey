@@ -27,8 +27,13 @@ describe('format time ago', () => {
   });
   it('should return 3 years', () => {
     const expectedData = '3 years ago';
-    const currentDate = new Date();
-    const data = new Date().setFullYear(currentDate.getFullYear() - 3);
+    const data = new Date(2017, 3, 4);
+    const result = formatTimeAgo(data);
+    expect(result).toBe(expectedData);
+  });
+  it('should return 4 days ago', () => {
+    const expectedData = '4 days ago';
+    const data = new Date(2020, 3, 1);
     const result = formatTimeAgo(data);
     expect(result).toBe(expectedData);
   });
