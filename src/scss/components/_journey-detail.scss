@@ -9,7 +9,7 @@
   z-index: 100;
   padding: 2rem;
   width: 80vw;
-  max-width: 800px;
+  max-width: 600px;
   height: 80%;
   display: flex;
   align-items: center;
@@ -81,6 +81,10 @@
     &--edit {
       background-color: $white;
       color: $blue;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       &:hover {
         border: 2px solid darken($color: $blue, $amount: 20);
         background-color: darken($color: $blue, $amount: 20);

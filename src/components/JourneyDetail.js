@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 
 function JourneyDetail(props) {
   const { journey, setBlockClicking, setDetail } = props;
@@ -17,10 +18,6 @@ function JourneyDetail(props) {
     e.stopPropagation();
     setDetail(false);
     setBlockClicking(false);
-  };
-
-  const handleEdit = (e) => {
-    console.log(id);
   };
 
   return ReactDOM.createPortal(
@@ -68,12 +65,12 @@ function JourneyDetail(props) {
           )}
         </div>
         <div className="journey-detail__footer">
-          <button
+          <Link
+            to={`/edit/${id}`}
             className="journey-detail__button journey-detail__button--edit"
-            onClick={(e) => handleEdit(e, id)}
           >
             edit
-          </button>
+          </Link>
           <button
             className="journey-detail__button journey-detail__button--cancel"
             onClick={closeModal}
@@ -83,7 +80,7 @@ function JourneyDetail(props) {
         </div>
       </div>
     </>,
-    document.getElementById("portal")
+    document.getElementById('portal')
   );
 }
 

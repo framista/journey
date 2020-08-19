@@ -13,6 +13,11 @@
     padding: 1rem;
     flex-grow: 1;
   }
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0.5em;
+  }
   &__group {
     display: flex;
     flex-direction: column;

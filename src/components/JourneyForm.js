@@ -136,6 +136,7 @@ function JourneyForm(props) {
   return (
     <div>
       <form className="new-journey__form" onSubmit={onSubmitJourneyForm}>
+        <h2 className="new-journey__title">{props.submitButton}</h2>
         <div className="new-journey__group">
           <label>Location</label>
           <input

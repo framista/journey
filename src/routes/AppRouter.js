@@ -1,8 +1,9 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Journeys from '../components/Journeys';
-import NotFoundPage from '../components/NotFoundPage';
-import JourneyCreate from '../components/JourneyCreate';
+import NotFoundPage from '../components/pages/notFoundPage';
+import JourneyCreate from '../components/pages/create';
+import JourneyEdit from '../components/pages/edit';
 
 const AppRouter = () => (
   <Router>
@@ -10,6 +11,7 @@ const AppRouter = () => (
       <Switch>
         <Route path="/" component={Journeys} exact={true} />
         <Route path="/create" component={JourneyCreate} />
+        <Route path="/edit/:id" component={JourneyEdit} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

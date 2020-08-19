@@ -1,0 +1,32 @@
+.edit-journey {
+  &__img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    img {
+      object-fit: contain;
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .edit-journey {
+    &__img {
+      max-height: 300px;
+    }
+  }
+}
+
+@media (min-width: 1020px) {
+  .edit-journey {
+    &__img {
+      width: auto;
+      display: block;
+      max-width: 400px;
+      padding: 1rem;
+    }
+  }
+}

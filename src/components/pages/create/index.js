@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import ModalError from './ModalError';
-import JourneyForm from './JourneyForm';
+import ModalError from '../../ModalError';
+import JourneyForm from '../../JourneyForm';
 
 function JourneyCreate(props) {
   const [modalError, setModalError] = useState(false);
@@ -26,10 +26,6 @@ function JourneyCreate(props) {
     }
   };
 
-  const onCloseModalError = () => {
-    setModalError(false);
-  };
-
   return (
     <main className="container">
       <section className="new-journey">
@@ -49,7 +45,7 @@ function JourneyCreate(props) {
             <ModalError
               title="Oops!"
               description="There is no space to save this journey 😲"
-              onCloseModal={onCloseModalError}
+              onCloseModal={() => setModalError(false)}
             />
           </>
         )}

@@ -18,7 +18,6 @@ function JourneyTile(props) {
   };
 
   const handleShow = () => {
-    console.log(location, startDate);
     setDetail(true);
   };
 
