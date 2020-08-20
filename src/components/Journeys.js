@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import JourneyTile from './JourneyTile';
 import NoJourney from './NoJourney';
 import SearchForm from './SearchForm';
+import { sortByDate } from '../utils/sort';
 
 function Journeys() {
   /* TODO: change image*/
@@ -17,13 +18,17 @@ function Journeys() {
     setJourneys(journeysFiltered);
   };
 
+  const sortJourneys = () => {
+    setJourneys((prevJourneys) => sortByDate(prevJourneys));
+  };
+
   return (
     <main className="container">
       <section
         className="center-container"
         style={{ pointerEvents: blockClicking ? 'none' : 'auto' }}
       >
-        <SearchForm />
+        <SearchForm sort={sortJourneys} />
         {journeys.length ? (
           <div className="journey-container">
             {journeys.map((journey) => (
