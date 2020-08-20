@@ -13,6 +13,7 @@ function Journeys() {
   );
   const [journeysToShow, setJourneysToShow] = useState(journeys);
   const [blockClicking, setBlockClicking] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     setJourneysToShow(journeys);
@@ -21,6 +22,7 @@ function Journeys() {
   const handleDeleteJourney = (id) => {
     const journeysFiltered = journeys.filter((journey) => journey.id !== id);
     setJourneys(journeysFiltered);
+    setSearchText('');
   };
 
   const sortJourneys = () => {
@@ -33,6 +35,7 @@ function Journeys() {
       return matchText(text.toLowerCase(), object);
     });
     setJourneysToShow(journeysFiltered);
+    setSearchText(text);
   };
 
   return (
@@ -41,7 +44,11 @@ function Journeys() {
         className="center-container"
         style={{ pointerEvents: blockClicking ? 'none' : 'auto' }}
       >
-        <SearchForm sort={sortJourneys} search={searchInJourneys} />
+        <SearchForm
+          sort={sortJourneys}
+          searchText={searchText}
+          setSearchText={searchInJourneys}
+        />
         {journeys.length ? (
           journeysToShow.length ? (
             <div className="journey-container">

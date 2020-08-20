@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AiOutlineSortAscending } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 
-function SearchForm({ sort, search }) {
-  const [searchText, setSearchText] = useState('');
-
-  const onInputChange = (e) => {
-    const value = e.target.value;
-    setSearchText(value);
-    search(value);
-  };
+function SearchForm({ sort, searchText, setSearchText }) {
   return (
     <div className="search-form">
       <input
@@ -17,7 +10,7 @@ function SearchForm({ sort, search }) {
         type="text"
         placeholder="Search..."
         value={searchText}
-        onChange={onInputChange}
+        onChange={(e) => setSearchText(e.target.value)}
       />
       <button className="search-form__button--sort" onClick={sort}>
         <AiOutlineSortAscending />
@@ -28,7 +21,8 @@ function SearchForm({ sort, search }) {
 
 SearchForm.propTypes = {
   sort: PropTypes.func.isRequired,
-  search: PropTypes.func.isRequired,
+  setSearchText: PropTypes.func.isRequired,
+  searchText: PropTypes.string.isRequired,
 };
 
 export default SearchForm;
