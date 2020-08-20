@@ -41,6 +41,13 @@
   }
 }
 
+.no-journey-toshow {
+  color: $white;
+  margin: 2rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
 .new-journey {
   &__btn--create {
     position: fixed;
