@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import JourneyTile from './JourneyTile';
 import NoJourney from './NoJourney';
+import SearchForm from './SearchForm';
 
 function Journeys() {
   /* TODO: change image*/
@@ -22,6 +23,7 @@ function Journeys() {
         className="center-container"
         style={{ pointerEvents: blockClicking ? 'none' : 'auto' }}
       >
+        <SearchForm />
         {journeys.length ? (
           <div className="journey-container">
             {journeys.map((journey) => (
