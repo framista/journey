@@ -63,18 +63,28 @@ function JourneyForm(props) {
   };
 
   const deleteCompanion = (index) => {
-    const newCompanion = journey.travellingCompanion.filter(
+    const newCompanions = journey.travellingCompanion.filter(
       (_, i) => i !== index
     );
-    setJourney({ ...journey, travellingCompanion: newCompanion });
+    const travellingCompanionError = validateTravellingCompanion(
+      'correct',
+      newCompanions.length
+    );
+    setErrorJourney({
+      ...errorJourney,
+      travellingCompanion: travellingCompanionError,
+    });
+    setJourney({ ...journey, travellingCompanion: newCompanions });
   };
 
   const onTravellingCompanionChange = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
+      console.log(member);
+      console.log(member.length);
       const travellingCompanionError = validateTravellingCompanion(
         member,
-        journey.travellingCompanion.length
+        journey.travellingCompanion.length + 1 // one because don't want to be out range
       );
       if (!travellingCompanionError) {
         const newCompanion = [...journey.travellingCompanion, member];
@@ -86,6 +96,19 @@ function JourneyForm(props) {
         travellingCompanion: travellingCompanionError,
       });
     }
+  };
+
+  const onMemberChange = (e) => {
+    const value = e.target.value;
+    const travellingCompanionError = validateTravellingCompanion(
+      value,
+      journey.travellingCompanion.length
+    );
+    setMember(value);
+    setErrorJourney({
+      ...errorJourney,
+      travellingCompanion: travellingCompanionError,
+    });
   };
 
   const onFileImageChange = (e) => {
@@ -126,7 +149,8 @@ function JourneyForm(props) {
       description: descriptionError,
     };
     setErrorJourney(newErrorJourney);
-    return checkErrors(newErrorJourney);
+    const { travellingCompanion, ...journeyWithoutCompanion } = newErrorJourney;
+    return checkErrors(journeyWithoutCompanion);
   };
 
   const onCloseModalError = () => {
@@ -231,7 +255,7 @@ function JourneyForm(props) {
             type="text"
             onKeyPress={onTravellingCompanionChange}
             value={member}
-            onChange={(e) => setMember(e.target.value)}
+            onChange={onMemberChange}
           />
           {errorJourney.travellingCompanion && (
             <p className="new-journey__error">
@@ -241,11 +265,7 @@ function JourneyForm(props) {
         </div>
         <div className="new-journey__group">
           <label>Image</label>
-          <input
-            type="file"
-            id="file-image"
-            onChange={(e) => onFileImageChange(e)}
-          />
+          <input type="file" id="file-image" onChange={onFileImageChange} />
           <div className="new-journey__image-info">
             <label htmlFor="file-image" className="new-journey__label--image">
               Choose image

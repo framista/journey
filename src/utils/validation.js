@@ -29,7 +29,7 @@ export const validateDescription = (description) => {
 
 export const validateTravellingCompanion = (member, membersAmount) => {
   if (membersAmount > 15) {
-    return 'You have too many travelling companions';
+    return 'You cannot add more travelling companions';
   } else if (member.length < 3) {
     return 'The travelling companion should contain at least 3 characters';
   } else if (member.length > 15) {
