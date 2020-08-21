@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import ModalError from './ModalError';
+import ModalError from './modalError';
 
 import {
   checkErrors,

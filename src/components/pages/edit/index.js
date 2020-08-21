@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NotFoundPage from '../notFoundPage';
-import ModalError from '../../ModalError';
+import ModalError from '../../modalError';
 import JourneyForm from '../../JourneyForm';
 
 function JourneyEdit(props) {

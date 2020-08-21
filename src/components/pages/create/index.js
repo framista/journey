@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import ModalError from '../../ModalError';
+import ModalError from '../../modalError';
 import JourneyForm from '../../JourneyForm';
 
 function JourneyCreate(props) {
