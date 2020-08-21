@@ -96,7 +96,7 @@ describe('validate travelling companion', () => {
     expect(result).toBe('');
   });
   it('should return error message if there is more than 15 members', () => {
-    const expectedMessage = 'You have too many travelling companions';
+    const expectedMessage = 'You cannot add more travelling companions';
     const result = validateTravellingCompanion('Joe', 16);
     expect(result).toBe(expectedMessage);
   });
