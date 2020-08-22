@@ -1,5 +1,5 @@
 import React from 'react';
-import NoJourney from './NoJourney';
+import NoJourney from './index';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';

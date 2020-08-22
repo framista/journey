@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import JourneyTile from './JourneyTile';
-import NoJourney from './NoJourney';
-import SearchForm from './SearchForm';
+import NoJourney from './no-journey';
+import SearchForm from './searchForm';
 import { sortByDate } from '../utils/sort';
 import { matchText } from '../utils/match';
 

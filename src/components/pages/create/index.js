@@ -5,11 +5,12 @@ import JourneyForm from '../../JourneyForm';
 
 function JourneyCreate(props) {
   const [modalError, setModalError] = useState(false);
+  const currentDate = new Date();
 
   const journey = {
     id: uuidv4(),
     location: '',
-    startDate: { day: 1, month: 1, year: new Date().getFullYear() },
+    startDate: { day: currentDate.getDate(), month: currentDate.getMonth() + 1, year: currentDate.getFullYear() },
     description: '',
     travellingCompanion: [],
     imageFile: '',
