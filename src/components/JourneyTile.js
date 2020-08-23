@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import { TiDelete } from 'react-icons/ti';
-import JourneyDeleteModal from './JourneyDeleteModal';
+import DeleteModal from '../components/modalDelete';
 import Avatar from 'react-avatar';
 import { formatTimeAgo } from '../utils/format';
 import JourneyDetail from './JourneyDetail';
@@ -39,7 +39,7 @@ function JourneyTile(props) {
         </div>
         <TiDelete className="journey__icon" onClick={(e) => handleDelete(e)} />
         {deleteModal && (
-          <JourneyDeleteModal
+          <DeleteModal
             journey={journey}
             deleteJourney={deleteJourney}
             setDeleteModal={setDeleteModal}

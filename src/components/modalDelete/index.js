@@ -1,7 +1,8 @@
 import React from 'react';
-import { formatDate } from '../utils/format';
+import { formatDate } from '../../utils/format';
+import PropTypes from 'prop-types';
 
-function JourneyDeleteModal(props) {
+function DeleteModal(props) {
   const { journey, deleteJourney, setDeleteModal, setBlockClicking } = props;
   const { location, startDate, id } = journey;
 
@@ -48,4 +49,10 @@ function JourneyDeleteModal(props) {
   );
 }
 
-export default JourneyDeleteModal;
+DeleteModal.propTypes = {
+  journey: PropTypes.object.isRequired,
+  deleteJourney: PropTypes.func.isRequired,
+  setDeleteModal: PropTypes.func.isRequired,
+  setBlockClicking: PropTypes.func.isRequired
+}
+export default DeleteModal;
